@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html ng-app="tinytest">
+<head>
+  <title>
+    tinymce directive
+  </title>
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+  <script src="//tinymce.cachefly.net/4.0/tinymce.min.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+  <script type="text/javascript" src="tx-tinymce.js"></script>
+  <script type="text/javascript">
+    angular.module('tinytest',['tx-tinymce'])
+    .controller('TestCtrl',function($scope){
+
+      $scope.model = {
+        second: "Oh yeah! <strong>HTML ftw!</strong>"
+      };
+
+      $scope.config = { toolbar:'bold | italic' };
+
+      $scope.changeConfig = function(){
+        $scope.config = { toolbar:'bold' };
+      };
+
+    });
+
+  </script>
+</head>
+<body ng-controller="TestCtrl">
+
+<form name="form" role="form">
+  <div>Pristine: {{form.$pristine}},Dirty: {{form.$dirty}},Valid: {{form.$valid}},</div>
+  <div class="form-group">
+    <label>TinyMCE test</label>
+    <textarea class="form-control" tx-tinymce ng-model="model.first"></textarea>
+  </div>
+  <div class="form-group">
+    <label>Regular textarea</label>
+    <textarea class="form-control" ng-model="model.first"></textarea>
+  </div>
+  <pre>{{model.first}}</pre>
+  <button ng-click="destroy()">destroy</button>
+</form>
+
+<form name="form2">
+  <div>Pristine: {{form2.$pristine}},Dirty: {{form2.$dirty}},Valid: {{form2.$valid}},</div>
+  <div class="form-group">
+    <label>TinyMCE test,prepopulated model</label>
+    <textarea class="form-control" tx-tinymce ng-model="model.second"></textarea>
+    <pre>{{model.second}}</pre>
+  </div>
+</form>
+
+<form name="form3">
+  <div>Pristine: {{form3.$pristine}},Dirty: {{form3.$dirty}},Valid: {{form3.$valid}},</div>
+  <div class="form-group">
+    <label>TinyMCE test, with config that can change.</label>
+    <textarea class="form-control" tx-tinymce="config" ng-model="model.third"></textarea>
+    <pre>{{model.third}}</pre>
+    <button ng-click="changeConfig()">Change config</button>
+  </div>
+</form>
+
+</body>
+</html>

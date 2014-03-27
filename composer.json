@@ -1,0 +1,29 @@
+{
+    "name": "components/tx-tinymce",
+    "version": "0.0.1",
+    "description": "AngularJS directive for TinyMCE",
+    "type": "component",
+    "homepage": "https://github.com/Texttalk/tx-tinymce/",
+    "license": "MIT",
+    "support": {
+        "issues": "https://github.com/Texttalk/tx-tinymce/issues",
+        "wiki": "https://github.com/Texttalk/tx-tinymce/",
+        "source": "https://github.com/Texttalk/tx-tinymce/"
+    },
+    "authors": [
+        {
+            "name": "David Jensen",
+            "email": "david.lgj@gmail.com"
+        }
+    ],
+    "require": {
+        "robloach/component-installer": "*"
+    },
+    "extra": {
+        "component": {
+            "scripts": [
+                "tx-tinymce.js"
+            ]
+        }
+    }
+}
