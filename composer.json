@@ -1,6 +1,6 @@
 {
     "name": "components/tx-tinymce",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "AngularJS directive for TinyMCE",
     "type": "component",
     "homepage": "https://github.com/Texttalk/tx-tinymce/",

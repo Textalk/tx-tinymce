@@ -48,8 +48,8 @@ angular.module('tx-tinymce',[])
       scope.$on('$destroy',destroy);
 
       //If config is set watch it for changes, otherwise just init.
-      if (attrs.ttTinymce) {
-        scope.$watch(attrs.ttTinymce,function(config,old){
+      if (attrs.txTinymce) {
+        scope.$watch(attrs.txTinymce,function(config,old){
           if (config) {
             destroy();
             init(config);
