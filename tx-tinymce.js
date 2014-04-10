@@ -10,13 +10,28 @@ angular.module('tx-tinymce',[])
       var tinymce;
       if (!attrs.id) {
         attrs.$set('id','tx-tinymce-'+count++);
+      } else {
+        //do we have real jQuery? or querySelector
+        var focus = function(){
+          if (tinymce) {
+          }
+        };
+        if (window.jQuery) {
+          jQuery('label[for='+attrs.id+']')
+        }
       }
+
+
 
       var init = function(config){
         config = angular.extend(config || {},{
           selector: '#'+attrs.id,
           setup: function(ed) {
             tinymce = ed;
+            console.log(tinymce)
+            window['focus'+attrs.id] = function(){
+              tinymce.execCommand('mceFocus', false, attrs.id);
+            };
             var update = function(){
               var content = ed.getContent();
               if (ngModel.$viewValue !== content) {
@@ -63,7 +78,7 @@ angular.module('tx-tinymce',[])
       //Watch scope for changes in model and update
       //tinymce when needed.
       scope.$watch(attrs.ngModel,function(value,old){
-        if (tinymce) {
+        if (tinymce && angular.isDefined(value)) {
           var content = tinymce.getContent();
           if (angular.isString(value) && content !== value) {
             tinymce.setContent(value);

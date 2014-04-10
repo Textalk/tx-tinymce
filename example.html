@@ -32,12 +32,12 @@
 <form name="form" role="form">
   <div>Pristine: {{form.$pristine}},Dirty: {{form.$dirty}},Valid: {{form.$valid}},</div>
   <div class="form-group">
-    <label>TinyMCE test</label>
-    <textarea class="form-control" tx-tinymce ng-model="model.first"></textarea>
+    <label for="tiny">TinyMCE test</label>
+    <textarea id="tiny" name="tiny" class="form-control" tx-tinymce ng-model="model.first"></textarea>
   </div>
   <div class="form-group">
-    <label>Regular textarea</label>
-    <textarea class="form-control" ng-model="model.first"></textarea>
+    <label for="regular">Regular textarea</label>
+    <textarea id="regular" name="regular"  class="form-control" ng-model="model.first"></textarea>
   </div>
   <pre>{{model.first}}</pre>
   <button ng-click="destroy()">destroy</button>
