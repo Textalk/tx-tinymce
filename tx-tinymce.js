@@ -46,6 +46,12 @@ angular.module('tx-tinymce',[])
             ed.on('change',update);
             ed.on('KeyUp',update);
             ed.on('ExecCommand',update);
+            ed.on('focus', function(e) {
+              angular.element(e.target.contentAreaContainer).addClass('tx-tinymce-active');
+            });
+            ed.on('blur', function(e) {
+              angular.element(e.target.contentAreaContainer).removeClass('tx-tinymce-active');
+            });
           }
         });
         tinyMCE.init(config);
