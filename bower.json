@@ -1,6 +1,6 @@
 {
   "name": "tx-tinymce",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "authors": [
     "David Jensen <david.lgj@gmail.com>"
   ],
@@ -23,5 +23,8 @@
     "bower.json",
     "gulpfile.js",
     "example.html"
-  ]
+  ],
+  "dependencies": {
+    "angular": ">= 1.2.0"
+  },
 }
