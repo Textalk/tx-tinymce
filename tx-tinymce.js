@@ -82,7 +82,7 @@ angular.module('tx-tinymce',[])
       //Watch scope for changes in model and update
       //tinymce when needed.
       scope.$watch(attrs.ngModel,function(value,old){
-        if (tinymce && angular.isDefined(value)) {
+        if (tinymce && angular.isDefined(value) && tinymce.getDoc()) {
           var content = tinymce.getContent();
           if (angular.isString(value) && content !== value) {
             tinymce.setContent(value);
