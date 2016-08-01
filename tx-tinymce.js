@@ -83,9 +83,18 @@ angular.module('tx-tinymce',[])
       //tinymce when needed.
       scope.$watch(attrs.ngModel,function(value,old){
         if (tinymce && angular.isDefined(value) && tinymce.getDoc()) {
-          var content = tinymce.getContent();
-          if (angular.isString(value) && content !== value) {
-            tinymce.setContent(value);
+          if (tinymce.initialized) {
+            var content = tinymce.getContent();
+              if (angular.isString(value) && content !== value) {
+                tinymce.setContent(value);
+              }
+          } else {
+            tinymce.on('init', function() {
+              var content = tinymce.getContent();
+              if (angular.isString(value) && content !== value) {
+                tinymce.setContent(value);
+              }
+            });
           }
         }
       });
